@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>laaaaa</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <style>
+            div{
+                text-align: center;
+                margin: auto;
+            }
+            div div{
+                float: left;
+                width: 25%;
+            }
+            input{
+                display: block;
+                margin-bottom: 30px;
+            }
+            .hid{
+                display: none;
+            }
+        </style>
+</head>
+<body>
+<div>
+    <div>
+        <form name="sign_in">
+            <input type="text" name="username">
+            <input type="password" name="password">
+            <label><input type="submit" class="hid" value="sign in"><img src="ntoucs.jpg"></label>
+        </form>
+    </div>
+    <div>
+        <form id="regist" name="regist">
+            <input type="text" name="username">
+            <input type="password" name="password">
+            
+            <input type="file"accept=".png, .jpg, .jpeg">
+            <label><input type="submit" class="hid" value="regist"><img src="ntoucs.jpg"></label>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $("#regist").submit(function(){
+            let input=document.forms['regist'],input_str;
+            input_str=input[0].value+" "+input[1].value;
+            input_str=input_str.split(' ');
+            input_str=JSON.stringify(input_str);
+            alert(input_str);
+            $.post("data.json",input_str);
+        })
+
+    })
+
+</script>
+</body>
+
+</html>
